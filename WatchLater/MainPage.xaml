@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:WatchLater"
+             x:Class="WatchLater.MainPage">
+
+    <Grid x:Name="grid" ColumnDefinitions="*"
+          RowDefinitions="0.2*,*">
+
+        <Frame x:Name="addButtonFrame" BackgroundColor="LightPink">
+            <Button Text="Watch Later"></Button>
+        </Frame>
+        
+        <CollectionView x:Name="movieCollectionView" BackgroundColor="Beige">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="3" BackgroundColor="Blue">
+
+                        <!--<controls:MovieCard Title="{Binding Title}"
+                                        IconUrl="{Binding IconUrl}"/>-->
+
+                        <Frame BackgroundColor="Brown">
+                            <Frame.GestureRecognizers>
+                                <ClickGestureRecognizer NumberOfClicksRequired="1" Clicked="OnTap" CommandParameter="{Binding .}"/>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnTap" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding IconUrl}"></Label>
+                        </Frame>
+                        <Label Text="{Binding Title}"></Label>
+                        
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </Grid>
+
+</ContentPage>
